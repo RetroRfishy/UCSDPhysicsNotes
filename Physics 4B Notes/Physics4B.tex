@@ -197,7 +197,7 @@ We deal with transverse and longitudinal waves, which are classified based on ho
 \centering
 \begin{tikzpicture}[scale=1.0]
 
-    % ---- Transverse wave (top) ----
+    % ;- Transverse wave (top) ;-
     \node[left, font=\small] at (-0.3, 1.6) {Transverse};
     % the wave shape
     \draw[blue, very thick, domain=0:8, samples=200]
@@ -214,7 +214,7 @@ We deal with transverse and longitudinal waves, which are classified based on ho
     \node[red, font=\small, right] at (6.95,1.60) {particle};
     \node[red, font=\small, right] at (6.95,1.30) {motion};
 
-    % ---- Longitudinal wave (bottom) ----
+    % ;- Longitudinal wave (bottom) ;-
     \node[left, font=\small] at (-0.3, -2.1) {Longitudinal};
     % rows of dots with varying density (compressions and rarefactions)
     \foreach \x in {0.10,0.30,0.55,0.90,1.35,1.55,1.72,1.88,2.10,2.45,
@@ -2046,7 +2046,7 @@ Then,
     \coordinate (S2)  at (6.4,2.45);  % final state
     \coordinate (S3)  at (6.4,1.248); % isotherm thru 1 at V2: P1 V1 / V2 = 4.7*1.7/6.4
 
-    % ---- path A (blue): isotherm 1 -> 3, then constant volume 3 -> 2 ----
+    % ;- path A (blue): isotherm 1 -> 3, then constant volume 3 -> 2 ;-
     \draw[blue, very thick, domain=1.7:6.4, samples=90]
         plot (\x, {4.7*1.7/\x});            % isotherm 1 -> 3
     \draw[blue, very thick] (S3) -- (S2);    % const V: 3 -> 2
@@ -2056,7 +2056,7 @@ Then,
     \draw[blue, very thick, -{Stealth[length=2.6mm]}]
         (6.4,1.55) -- (6.4,1.75);
 
-    % ---- path B (red): constant pressure 1 -> 3', then constant volume 3' -> 2 ----
+    % ;- path B (red): constant pressure 1 -> 3', then constant volume 3' -> 2 ;-
     \draw[red, very thick] (S1) -- (S3p);    % const P: 1 -> 3'
     \draw[red, very thick] (S3p) -- (S2);    % const V: 3' -> 2
     % arrows for B
@@ -2175,7 +2175,7 @@ area enclosed is the net work $W$ done per cycle.
     \draw[->] (0,0) -- (9.4,0) node[right] {$V$};
     \draw[->] (0,0) -- (0,6.8) node[above] {$P$};
 
-    % --- Carnot loop drawn schematically as four distinct arcs ---
+    % ; Carnot loop drawn schematically as four distinct arcs ;
     % Corners chosen well-separated so the enclosed area is clearly visible.
     \coordinate (a) at (1.7,5.7);   % top-left
     \coordinate (b) at (4.3,4.2);   % upper-right-ish
@@ -2522,7 +2522,7 @@ Note that this is when $t=0$; we need some time dependence for a full solution.
 \begin{equation}
 	\psi(x,t) = \sum^{\infty}_{n=1} A_n\sin\left(\frac{n\pi x}{L}\right)\cos(\omega_n t)
 \end{equation}
-Here the time factor is $\cos(\omega_n t)$ rather than $\sin(\omega_n t)$: the string is released from rest, so $\partial_t\psi(x,0)=0$, and only cosine satisfies that initial condition. (If instead the string were given an initial velocity profile with zero displacement, the time factor would be $\sin(\omega_n t)$ --- see Problem 3.)
+Here the time factor is $\cos(\omega_n t)$ rather than $\sin(\omega_n t)$: the string is released from rest, so $\partial_t\psi(x,0)=0$, and only cosine satisfies that initial condition. (If instead the string were given an initial velocity profile with zero displacement, the time factor would be $\sin(\omega_n t)$ ; see Problem 3.)
 \subsection{Some problems}
 \paragraph{Problem 1} Given $f(x) = x$ on $[0,L]$, find the Fourier sine coefficients.
 \paragraph{Problem 2 (Triangular Pluck)} A string of length $L$ is fixed at both ends. Its initial displacement is
@@ -2939,11 +2939,11 @@ The starting point is the \textbf{multiplication principle}: if one choice can b
 \end{equation}
 We adopt the convention $0!=1$ (there is exactly one way to arrange nothing).
 
-\paragraph{Choosing a subset.} Now suppose we only want to \emph{select} $k$ objects out of $n$, and we don't care about the order within the selection. If order \emph{did} matter, we'd have $n(n-1)\cdots(n-k+1) = \frac{n!}{(n-k)!}$ ordered selections. But each unordered group of $k$ objects has been counted $k!$ times --- once for each internal ordering. Dividing out that overcount gives the \textbf{binomial coefficient}
+\paragraph{Choosing a subset.} Now suppose we only want to \emph{select} $k$ objects out of $n$, and we don't care about the order within the selection. If order \emph{did} matter, we'd have $n(n-1)\cdots(n-k+1) = \frac{n!}{(n-k)!}$ ordered selections. But each unordered group of $k$ objects has been counted $k!$ times ; once for each internal ordering. Dividing out that overcount gives the \textbf{binomial coefficient}
 \begin{equation}
 	\binom{n}{k} = \frac{n!}{k!\,(n-k)!}.
 \end{equation}
-Read it as ``$n$ choose $k$.'' The logic --- ``count ordered things, then divide by the overcount'' --- is the single most useful trick in combinatorics, so internalize it.
+Read it as ``$n$ choose $k$.'' The logic ; ``count ordered things, then divide by the overcount'' ; is the single most useful trick in combinatorics, so internalize it.
 
 \paragraph{The binomial theorem.} The same coefficient appears when we expand a power of a sum:
 \begin{equation}
@@ -2952,21 +2952,21 @@ Read it as ``$n$ choose $k$.'' The logic --- ``count ordered things, then divide
 This is not a coincidence. Expanding $(x+y)^n = (x+y)(x+y)\cdots(x+y)$, each term is built by picking either $x$ or $y$ from each of the $n$ factors. The number of terms that end up with exactly $k$ copies of $x$ is precisely the number of ways to choose which $k$ factors contribute an $x$, namely $\binom{n}{k}$.
 
 \subsection{The multinomial coefficient}
-In kinetic theory we rarely sort objects into just two bins (``chosen / not chosen''). We sort $N$ molecules into many cells --- energy levels, velocity ranges, regions of space. Suppose we distribute $N$ distinct molecules into $r$ boxes, with $n_1$ in the first box, $n_2$ in the second, and so on, where $n_1+n_2+\cdots+n_r = N$. How many ways?
+In kinetic theory we rarely sort objects into just two bins (``chosen / not chosen''). We sort $N$ molecules into many cells ; energy levels, velocity ranges, regions of space. Suppose we distribute $N$ distinct molecules into $r$ boxes, with $n_1$ in the first box, $n_2$ in the second, and so on, where $n_1+n_2+\cdots+n_r = N$. How many ways?
 
 We count in stages. Choose the $n_1$ molecules for box 1: that's $\binom{N}{n_1}$ ways. From the remaining $N-n_1$, choose $n_2$ for box 2: $\binom{N-n_1}{n_2}$ ways. Continue. By the multiplication principle the total is
 \begin{align*}
 	\binom{N}{n_1}\binom{N-n_1}{n_2}\cdots
 	&= \frac{N!}{n_1!(N-n_1)!}\cdot\frac{(N-n_1)!}{n_2!(N-n_1-n_2)!}\cdots
 \end{align*}
-The factorials telescope --- each $(N-n_1-\cdots)!$ in a denominator cancels the same factor in the next numerator --- and we are left with the \textbf{multinomial coefficient}
+The factorials telescope ; each $(N-n_1-\cdots)!$ in a denominator cancels the same factor in the next numerator ; and we are left with the \textbf{multinomial coefficient}
 \begin{equation}
 	\binom{N}{n_1,n_2,\ldots,n_r} = \frac{N!}{n_1!\,n_2!\cdots n_r!}.
 \end{equation}
-This single quantity is the \textbf{number of microstates} (microscopic arrangements) consistent with a given macroscopic distribution $(n_1,\ldots,n_r)$. In statistical mechanics it is usually called the \textbf{multiplicity} and written $\Omega$. The central claim of statistical mechanics is that a system, left alone, is found in the macrostate with the largest $\Omega$ --- simply because that macrostate corresponds to overwhelmingly more microstates than any other.
+This single quantity is the \textbf{number of microstates} (microscopic arrangements) consistent with a given macroscopic distribution $(n_1,\ldots,n_r)$. In statistical mechanics it is usually called the \textbf{multiplicity} and written $\Omega$. The central claim of statistical mechanics is that a system, left alone, is found in the macrostate with the largest $\Omega$ ; simply because that macrostate corresponds to overwhelmingly more microstates than any other.
 
 \subsection{Stirling's approximation}
-The factorials above are exact but useless for $N\sim 10^{23}$ --- we cannot evaluate $N!$ directly, and more importantly we want to \emph{differentiate} expressions containing it (to maximize $\Omega$). We need a smooth approximation for $\ln N!$.
+The factorials above are exact but useless for $N\sim 10^{23}$ ; we cannot evaluate $N!$ directly, and more importantly we want to \emph{differentiate} expressions containing it (to maximize $\Omega$). We need a smooth approximation for $\ln N!$.
 
 Start from the exact identity
 \begin{equation}
@@ -2982,7 +2982,7 @@ For large $N$ the $+1$ is negligible against the other terms, giving the form we
 \end{equation}
 This is \textbf{Stirling's approximation}. (A more careful analysis adds a term $\tfrac12\ln(2\pi N)$, i.e. $N!\approx\sqrt{2\pi N}\,(N/e)^N$, but the $\tfrac12\ln(2\pi N)$ piece grows like $\ln N$, utterly negligible against the $N\ln N$ terms when $N\sim 10^{23}$. For kinetic theory the boxed form is all we ever need.)
 
-The reason this is the workhorse of statistical mechanics: it converts the unmanageable, discrete $\ln N!$ into a smooth, differentiable function of $N$. Once $\ln\Omega$ is smooth we can maximize it with calculus --- and maximizing $\ln\Omega$ is exactly how the Maxwell--Boltzmann distribution drops out, as we will see.
+The reason this is the workhorse of statistical mechanics: it converts the unmanageable, discrete $\ln N!$ into a smooth, differentiable function of $N$. Once $\ln\Omega$ is smooth we can maximize it with calculus ; and maximizing $\ln\Omega$ is exactly how the Maxwell--Boltzmann distribution drops out, as we will see.
 
 \subsection{Why counting gives an exponential}
 Here is the punchline that connects this section to the main notes. Suppose we distribute $N$ molecules among energy levels $\varepsilon_i$, with $n_i$ molecules in level $i$, subject to fixed total number $\sum_i n_i = N$ and fixed total energy $\sum_i n_i\varepsilon_i = E$. The multiplicity is $\Omega = N!/\prod_i n_i!$. Taking the log and applying Stirling,
@@ -3001,17 +3001,17 @@ Differentiating with respect to a particular $n_i$ (and using $\frac{d}{dn}(n\ln
 	\;\;\Longrightarrow\;\;
 	n_i \propto e^{-\beta\varepsilon_i}.
 \]
-This is the \textbf{Boltzmann factor}. The exponential dependence on energy that we simply \emph{asserted} when writing down the Maxwell--Boltzmann distribution in the main notes is, in fact, forced on us by counting microstates and maximizing the multiplicity. The constant $\beta$ turns out to be $1/k_BT$. We will not push this further here --- the point is only to show that the combinatorics is doing real physical work.
+This is the \textbf{Boltzmann factor}. The exponential dependence on energy that we simply \emph{asserted} when writing down the Maxwell--Boltzmann distribution in the main notes is, in fact, forced on us by counting microstates and maximizing the multiplicity. The constant $\beta$ turns out to be $1/k_BT$. We will not push this further here ; the point is only to show that the combinatorics is doing real physical work.
 
 \section{Probability Theory for Kinetic Theory}
-Kinetic theory is a statistical theory: we never track individual molecules, only \emph{distributions}. This section sets up the probability language --- densities, expectation values, variance --- needed to make sense of $g(v)$, $\bar v$, and $v_\text{rms}$ in the main notes.
+Kinetic theory is a statistical theory: we never track individual molecules, only \emph{distributions}. This section sets up the probability language ; densities, expectation values, variance ; needed to make sense of $g(v)$, $\bar v$, and $v_\text{rms}$ in the main notes.
 
 \subsection{Discrete probability}
 A \textbf{discrete random variable} $X$ takes values $x_1,x_2,\ldots$ with probabilities $p_1,p_2,\ldots$. The probabilities must be non-negative and sum to one:
 \begin{equation}
 	p_i \ge 0,\qquad \sum_i p_i = 1.
 \end{equation}
-The second condition is \textbf{normalization} --- something must happen. The \textbf{expectation value} (mean) of $X$ is the probability-weighted average
+The second condition is \textbf{normalization} ; something must happen. The \textbf{expectation value} (mean) of $X$ is the probability-weighted average
 \begin{equation}
 	\langle X\rangle = \sum_i x_i\,p_i,
 \end{equation}
@@ -3019,14 +3019,14 @@ and more generally, for any function $h(X)$,
 \begin{equation}
 	\langle h(X)\rangle = \sum_i h(x_i)\,p_i.
 \end{equation}
-This last formula is worth pausing on: to average a \emph{function} of $X$, you weight the function's values by the probabilities of the underlying outcomes. We will use it constantly --- e.g. the kinetic energy is a function ($\propto v^2$) of the speed.
+This last formula is worth pausing on: to average a \emph{function} of $X$, you weight the function's values by the probabilities of the underlying outcomes. We will use it constantly ; e.g. the kinetic energy is a function ($\propto v^2$) of the speed.
 
 \subsection{Continuous probability and the probability density}
-Molecular speeds are not discrete --- a molecule can have any speed in a continuum. For a \textbf{continuous random variable} the probability of \emph{exactly} any single value is zero, so we cannot use a list $p_i$. Instead we use a \textbf{probability density function} $\rho(x)$, defined so that
+Molecular speeds are not discrete ; a molecule can have any speed in a continuum. For a \textbf{continuous random variable} the probability of \emph{exactly} any single value is zero, so we cannot use a list $p_i$. Instead we use a \textbf{probability density function} $\rho(x)$, defined so that
 \begin{equation}
 	P(a \le X \le b) = \int_a^b \rho(x)\,dx.
 \end{equation}
-The density itself is not a probability --- $\rho(x)\,dx$ is. Think of $\rho$ as ``probability per unit $x$,'' exactly as mass density is mass per unit volume. This is the same mental move as the inner-product analogy in the Fourier section: a sum over a discrete index becomes an integral over a continuum.
+The density itself is not a probability ; $\rho(x)\,dx$ is. Think of $\rho$ as ``probability per unit $x$,'' exactly as mass density is mass per unit volume. This is the same mental move as the inner-product analogy in the Fourier section: a sum over a discrete index becomes an integral over a continuum.
 
 The discrete formulas carry over with sums replaced by integrals:
 \begin{align}
@@ -3046,12 +3046,12 @@ Expanding the square and using the fact that $\langle X\rangle$ is a constant (s
 	&= \langle X^2\rangle - 2\langle X\rangle\langle X\rangle + \langle X\rangle^2
 	= \langle X^2\rangle - \langle X\rangle^2.
 \end{align*}
-This identity --- \textbf{the mean of the square minus the square of the mean} --- is used everywhere. The \textbf{standard deviation} is $\sigma = \sqrt{\mathrm{Var}(X)}$, which has the same units as $X$ itself.
+This identity ; \textbf{the mean of the square minus the square of the mean} ; is used everywhere. The \textbf{standard deviation} is $\sigma = \sqrt{\mathrm{Var}(X)}$, which has the same units as $X$ itself.
 
 This is the precise reason $\bar v$ and $v_\text{rms}$ differ in the main notes. The root-mean-square speed is $v_\text{rms} = \sqrt{\langle v^2\rangle}$, while the mean speed is $\bar v = \langle v\rangle$. The identity above says $\langle v^2\rangle = \bar v^2 + \mathrm{Var}(v) \ge \bar v^2$, so $v_\text{rms}\ge\bar v$ always, with equality only if the speed had zero spread. The two are different numbers because the speed distribution genuinely has width.
 
 \subsection{The Gaussian distribution}
-The single most important continuous distribution --- and the one underlying Maxwell--Boltzmann --- is the \textbf{Gaussian} (or normal) distribution. A random variable is Gaussian with mean $0$ if its density has the form
+The single most important continuous distribution ; and the one underlying Maxwell--Boltzmann ; is the \textbf{Gaussian} (or normal) distribution. A random variable is Gaussian with mean $0$ if its density has the form
 \begin{equation}
 	\rho(x) = C\,e^{-\lambda x^2},\qquad \lambda > 0.
 \end{equation}
@@ -3065,12 +3065,12 @@ We want
 \begin{equation}
 	I = \int_{-\infty}^{\infty} e^{-\lambda x^2}\,dx.
 \end{equation}
-There is no elementary antiderivative of $e^{-\lambda x^2}$, so the one-dimensional integral cannot be done by the usual methods. The trick --- one of the prettiest in mathematics --- is to compute $I^2$ instead and exploit the symmetry of two dimensions:
+There is no elementary antiderivative of $e^{-\lambda x^2}$, so the one-dimensional integral cannot be done by the usual methods. The trick ; one of the prettiest in mathematics ; is to compute $I^2$ instead and exploit the symmetry of two dimensions:
 \begin{align*}
 	I^2 &= \left(\int_{-\infty}^{\infty} e^{-\lambda x^2}\,dx\right)\left(\int_{-\infty}^{\infty} e^{-\lambda y^2}\,dy\right)
 	= \int_{-\infty}^{\infty}\!\!\int_{-\infty}^{\infty} e^{-\lambda(x^2+y^2)}\,dx\,dy.
 \end{align*}
-Now switch to polar coordinates in the $xy$-plane: $x^2+y^2 = r^2$, and the area element is $dx\,dy = r\,dr\,d\theta$ (this $r$ is the 2D Jacobian, and it is the whole reason the trick works --- it makes the integrand integrable).
+Now switch to polar coordinates in the $xy$-plane: $x^2+y^2 = r^2$, and the area element is $dx\,dy = r\,dr\,d\theta$ (this $r$ is the 2D Jacobian, and it is the whole reason the trick works ; it makes the integrand integrable).
 \begin{align*}
 	I^2 &= \int_0^{2\pi}\!\!\int_0^{\infty} e^{-\lambda r^2}\,r\,dr\,d\theta
 	= 2\pi\int_0^{\infty} r\,e^{-\lambda r^2}\,dr.
@@ -3111,7 +3111,7 @@ These are precisely the integrals invoked in the Maxwell--Boltzmann derivation i
 and matching this to the physical result $\langle v_x^2\rangle = k_BT/m$ fixes $\lambda = m/2k_BT$. The mathematics of this appendix and the physics of the main notes meet exactly here.
 
 \subsection{From a velocity vector to a speed: the shell integral}
-There is one more step, and it is geometric rather than analytic. The distribution $F(\mathbf v)$ in the main notes is a density in the three-dimensional \textbf{velocity space} with coordinates $(v_x,v_y,v_z)$ --- a small ``phase-space'' picture. But experimentally we care about the \emph{speed} $v = |\mathbf v| = \sqrt{v_x^2+v_y^2+v_z^2}$, not the individual components. We need the probability that a molecule has speed between $v$ and $v+dv$, regardless of direction.
+There is one more step, and it is geometric rather than analytic. The distribution $F(\mathbf v)$ in the main notes is a density in the three-dimensional \textbf{velocity space} with coordinates $(v_x,v_y,v_z)$ ; a small ``phase-space'' picture. But experimentally we care about the \emph{speed} $v = |\mathbf v| = \sqrt{v_x^2+v_y^2+v_z^2}$, not the individual components. We need the probability that a molecule has speed between $v$ and $v+dv$, regardless of direction.
 
 In velocity space, ``speed between $v$ and $v+dv$'' is the set of points lying in a thin spherical \textbf{shell} of radius $v$ and thickness $dv$. The probability is the density $F$ integrated over that shell. Because $F$ depends only on the magnitude $v$ (Maxwell's isotropy assumption), $F$ is \emph{constant} over the shell, and the integral is just $F$ times the shell's volume:
 \begin{equation}
@@ -3121,7 +3121,7 @@ The volume of a spherical shell of radius $v$ and thickness $dv$ is its surface 
 \begin{equation}
 	(\text{shell volume}) = 4\pi v^2\,dv.
 \end{equation}
-The factor $4\pi v^2$ is the geometric heart of the matter --- it is the Jacobian for passing from Cartesian velocity coordinates to spherical ones, exactly analogous to the $r$ that appeared in the 2D Gaussian trick and the $r^2\sin\phi$ in the spherical Laplacian. It is also why the speed distribution \emph{rises} from zero at $v=0$: even though $F(\mathbf v)$ is largest at the origin, the shell there has vanishing volume, so few molecules are nearly at rest. Putting it together,
+The factor $4\pi v^2$ is the geometric heart of the matter ; it is the Jacobian for passing from Cartesian velocity coordinates to spherical ones, exactly analogous to the $r$ that appeared in the 2D Gaussian trick and the $r^2\sin\phi$ in the spherical Laplacian. It is also why the speed distribution \emph{rises} from zero at $v=0$: even though $F(\mathbf v)$ is largest at the origin, the shell there has vanishing volume, so few molecules are nearly at rest. Putting it together,
 \begin{equation}
 	g(v) = 4\pi v^2\,F(\mathbf v) = 4\pi\left(\frac{m}{2\pi k_BT}\right)^{3/2} v^2\,e^{-mv^2/2k_BT}.
 \end{equation}
