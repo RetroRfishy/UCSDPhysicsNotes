@@ -1,4 +1,4 @@
-\documentclass{article}
+\documentclass{report}
 \usepackage{float}
 \usepackage{graphicx} % Required for inserting images
 %\usepackage{amsmath}
@@ -39,6 +39,7 @@
 \maketitle
 \tableofcontents
 \newpage
+\chapter{Oscillations and Waves}
 \section{Lecture 1}
 \subsection{Simple Harmonic Oscillators}
 Recall that for a horizontal mass-spring system, the equation of motion is given by Hooke's Law
@@ -1137,6 +1138,7 @@ For a steel rod, the stiffness is not measured by the bulk modulus, but rather Y
 \begin{equation}
 	Y = \frac{F/A}{\Delta L/L}
 \end{equation}
+\chapter{Fluids}
 \section{Lecture 9}
 \subsection{Density}
 We need a way of finding $\rho_0$ from (8.10). The density is
@@ -1451,6 +1453,7 @@ This is actually not as general as we can get. Note that $g = g(h)$ also depends
 \begin{equation*}
     g(h) = \frac{GM}{(R+h)^2} = \frac{GM}{R^2}\frac{1}{\left(1+\frac{h}{R}\right)^2} \approx \frac{GM}{R^2}\left(1-\frac{2h}{R}\right)
 \end{equation*}
+\chapter{Thermodynamics}
 \section{Lecture 14}
 \subsection{Heat}
 A few definitions to begin
@@ -1595,7 +1598,6 @@ to use Bernoulli's equation
     \item Incompressible
 \end{itemize}
 \subsection{Phase transitions}
-Let's look at ice $\rightarrow$ water then water $\rightarrow$ vapor.
 \section{Lecture 16}
 \subsection{The transfer of heat}
 There are three ways heat can be transferred:
@@ -1862,6 +1864,49 @@ Now we get the last of the three results we have been working on
     v_{\text{rms}} &= \sqrt{\frac{3k_BT}{m}}\quad \text{(root-mean-square)}
 \end{align}
 \section{Lecture 19}
+There were a few mistakes from the previous lecture (corrected in my notes, but the discussion of the integral is useful so I'll include it here). Here is a corrected derivation. Recall 
+\begin{equation*}
+    g(v) = 4\pi v^2\left(\frac{m}{2\pi kT}\right)^{3/2}e^{-\frac{1}{2}mv^2/kT}
+\end{equation*}
+Now when we want to compute the average speed, we have a factor of $v^3$ in the integrand. We need to solve this integral
+\begin{equation*}
+    \int_0^{\infty}x^3 e^{-\lambda x}
+\end{equation*}
+We already know 
+\begin{equation*}
+    I_1(\lambda) = \int^{\infty}_0 dx xe^{-\lambda x^2} = \frac{1}{2\lambda}
+\end{equation*}
+So, taking the deriative of $I_1$ w.r.t $\lambda$, 
+\begin{equation*}
+    \pd{I_1}{\lambda} = -\int^{\infty}_0 dx x^3 e^{-\lambda x} = -\frac{1}{2\lambda^2}
+\end{equation*}
+This means
+\begin{equation}
+    \bar{v} = 4\pi\left(\frac{m}{2\pi kT}\right)^{3/2}\int^{\infty}_0 dv v^3 e^{-\frac{1}{2}mv^2/kT} = 4\pi\left(\frac{m}{2\pi kT}\right)^{3/2}\cdot\frac{1}{2}\cdot \frac{(kT)^2}{\frac{1}{4}m^2} = \sqrt{\frac{8kT}{\pi m}}
+\end{equation}
+\subsection{The First Law of Thermodynamics}
+The first law talks about the conservation of energy. The new concept we need to internalize (pun intended) is internal energy $U$. That is energy in the system 
+at a given state. For a monatomic ideal gas, $U$ is the kinetic energy of the molecules. So here, that means $U = \frac{3}{2}nRT$. This is because in a monatomic ideal gas we have only three degrees of freedom, which is the motion in each 
+direction. If we have more degrees of freedom, like a diatomic gas, the internal energy is going to be something different, since we have rotations too. This adds two extra degrees of freedom, so $U = \frac{5}{2}nRT$. For an ideal gas,
+\begin{equation}
+    U = U(T) \qquad \text{(ideal gas)}
+\end{equation}
+For a nonideal gas, 
+\begin{equation}
+    U = U(T,V) \qquad \text{(nonideal gas)}
+\end{equation}
+We usually draw $P$-$V$ diagrams to represnet theromdynamic situations. If $dU$ represents the change in internal energy, the first law of thermodynamics says  
+\begin{equation}
+    dU = \delta Q - \delta W
+\end{equation}
+Where $\delta Q$ is the heat \textbf{absorbed} by the system and $\delta W$ is the work done \textbf{by} the system. This means if heat is released, $\delta Q <0$ and if work is done on the system $\delta W<0$. Now, let's look more closely at work.
+\begin{equation}
+    \delta W = F\cdot dx = PAdx = PdV
+\end{equation}
+So, for ideal gasses we can write 
+\begin{equation}
+    dU = \delta Q - PdV \qquad \text{(first law for an ideal gas)}
+\end{equation}
 \section{Lecture 20}
 Recall
 \begin{equation*}
@@ -1965,12 +2010,232 @@ For an isothermal process, we obtain from simple integration
 \end{split}
 \end{align}
 \section{Lecture 21}
+\subsection{Adiabatic process: no heat exchanged}
+The situation here is a little different since $\Delta U$ is not necessarily 0 anymore. Firstly, recall, for a monatomic ideal gas 
+\begin{equation*}
+    U = \frac{3}{2}nRT
+\end{equation*}
+At constant volume $\Delta U = \delta Q$ since no work is done. This means, for one mole of a monatomic ideal gas,
+\begin{equation*}
+    \frac{dU}{dT} = \left(\frac{\delta Q}{\partial T}\right)_V = \frac{3}{2}R
+\end{equation*}
+We define the specific heat at constant volume $C_V$ to be the above quantity 
+\begin{equation}
+    C_V = \left(\frac{\delta Q}{\partial T}\right)_V
+\end{equation}
+This also means 
+\begin{equation}
+    dU = C_VdT
+\end{equation}
+If instead we took a constant pressure path, we would have to use the first law, since the work is no longer equal to zero here. 
+\begin{equation*}
+    \left(\pd{Q}{T}\right)_P = \frac{dU}{dT} + \frac{\delta W}{dT} = \frac{dU}{dT}+P\frac{dV}{dT} = \frac{dU}{dT}+ R = C_V+ R
+\end{equation*}
+So we get the important relation 
+\begin{equation*}
+    C_P = C_V + R
+\end{equation*}
+Recall, 
+\begin{align*}
+    \text{monatomic:}\qquad C_V = \frac{3}{2}R \implies C_P = \frac{5}{2}R\\
+    \text{diatomic:}\qquad C_V = \frac{5}{2}R\implies C_P = \frac{7}{2}R\\
+    \text{polyatomic:}\qquad C_V = 3R \implies C_P = 4R
+\end{align*}
+Now going back to the adiabatic process. We want to find the work
+\begin{equation*}
+    W = \int^{V_1}_{V_2}\frac{nRT}{V}dV 
+\end{equation*}
+but this is tough, since $T$ is changing. Instead, we use $dU = nC_V dT$. 
+\begin{equation*}
+    nC_V dT = -PdV = -\frac{nRT}{V}dV
+\end{equation*}
+Note what an adiabatic curve looks like compared to an isothermal curve.
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[scale=1.0]
+    \draw[->] (0,0) -- (8,0) node[right] {$V$};
+    \draw[->] (0,0) -- (0,6) node[above] {$P$};
+
+    % Common state (V0, P0) = (2, 4).
+    % Isotherm: P = 8/V          (PV = 8)
+    % Adiabat:  P = 10.556/V^1.4 (gamma = 1.4)
+
+    % isotherm (gentler)
+    \draw[blue, very thick, domain=1.5:7.5, samples=200]
+        plot (\x, {8/\x});
+
+    % adiabat (steeper)
+    \draw[red, very thick, domain=1.55:7.5, samples=200]
+        plot (\x, {10.556/pow(\x,1.4)});
+
+    % shared state point with dashed projections
+    \fill (2,4) circle (2.5pt);
+    \node[above right, font=\small] at (2.05,4.05) {$(V_0,P_0)$};
+    \draw[dashed, gray] (2,4) -- (2,0);
+    \node[below, font=\small] at (2,0) {$V_0$};
+    \draw[dashed, gray] (2,4) -- (0,4);
+    \node[left, font=\small] at (0,4) {$P_0$};
+
+    % curve labels with leader lines
+    \node[blue, font=\footnotesize] at (6.9, 1.85) {isotherm};
+    \draw[blue, thin] (6.4, 1.75) -- (6.05, 1.32);
+
+    \node[red, font=\footnotesize] at (6.9, 0.55) {adiabat};
+    \draw[red, thin] (6.4, 0.65) -- (6.05, 0.87);
+\end{tikzpicture}
+\caption{An isotherm (blue, $PV=\text{const.}$) and an adiabat (red, $PV^\gamma=\text{const.}$) through the same state $(V_0,P_0)$. Because $\gamma>1$, the adiabat is steeper everywhere: it lies above the isotherm for $V<V_0$ and below it for $V>V_0$.}
+\label{fig:isotherm_vs_adiabat}
+\end{figure}
+Rearranging the above,
+\begin{equation*}
+    \frac{C_VdT}{T} + R\frac{dV}{V} =0 \implies C_V\ln T + R\ln V = \text{const.}
+\end{equation*}
+Then dividing by $C_V$, and taking the exponential
+\begin{equation*}
+    \ln T + \frac{R}{C_V}\ln V = \text{const.} \implies TV^{\frac{R}{C_V}} = \text{another const.}
+\end{equation*}
+Now we introduce $\gamma = \frac{C_P}{C_V} = 1 + \frac{R}{C_V}$. So we can write the above as 
+\begin{equation}
+    TV^{\gamma - 1} = \text{const.}
+\end{equation}
+Since $PV = nRT$, 
+\begin{equation}
+    PV^{\gamma} = \text{const.}
+\end{equation}
+We see that all the adiabatic process curves are steeper than the isothermal process curves. Now we can ask what the work is given by in an adiabatic process. 
+\begin{align*}
+    \delta W = PdV \qquad P = \frac{\text{C}}{V^{\gamma}}\\
+    W = \int^{V_2}_{V_1}\frac{C}{V^{\gamma}}dV = C\frac{V^{1-\gamma}}{1-\gamma}\bigg|^{V_2}_{V_1} = \frac{C}{1-\gamma}\left(V_2^{1-\gamma}-V_1^{1-\gamma}\right)
+\end{align*}
+Since $C+ P_1V_1^{\gamma} = P_2V_2^{\gamma}$, some algebra gives us 
+\begin{equation}
+    W = \frac{P_2V_2 - P_1V_1}{1-\gamma}
+\end{equation}
+We can do this another way. In an adiabatic process 
+\begin{equation*}
+    \delta W = -dU = -C_VdT \implies W = -C_V(T_2 -T_1) = C_V(T_1-T_2)
+\end{equation*}
+To see this is equivalent to the previous expression of work, let's look at one mole and work towards our newer answer, 
+\begin{equation*}
+    W = \frac{P_2V_2 -P_1V_1}{1-\gamma} = \frac{RT_2 - RT_1}{1-\gamma} = \frac{R}{1-\gamma}(T_2-T_1)
+\end{equation*}
+Now we can check that $-C_V = \frac{R}{1-\gamma}$. 
+\begin{align*}
+    -C_V = \frac{R}{1-\gamma} \implies -C(1-\gamma) = R\\
+    \gamma = \frac{C_P}{C_V} = 1+\frac{R}{C_V} \implies -C_V(1-1-\frac{R}{C_V}) = R 
+\end{align*}
+So the equivalnce is there. The rest of this lecture is on cycles. I have not included them here because they are best learnt by doing problems.
 \section{Lecture 22}
+Let's talk about a cycle that will lead us to the second law of thermodynamics. We have an isothermal process from $A$ to $B$, an adiabatic process from $B$ to $C$, an isothermal process from $C$ to $D$, and finally an adiabatic process bringing us back from $D$ to $A$. This is the \textbf{Carnot cycle}.
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[scale=1.0]
+    \draw[->] (0,0) -- (9.4,0) node[right] {$V$};
+    \draw[->] (0,0) -- (0,6.8) node[above] {$P$};
+
+    \coordinate (A) at (1.7,5.7);
+    \coordinate (B) at (4.3,4.2);
+    \coordinate (C) at (7.8,1.5);
+    \coordinate (D) at (3.3,1.9);
+
+    \fill[gray!12]
+        (A) .. controls (2.6,4.7) and (3.4,4.4) .. (B)
+        .. controls (5.8,3.5) and (6.9,2.3) .. (C)
+        .. controls (6.0,1.55) and (4.4,1.65) .. (D)
+        .. controls (2.7,2.7) and (2.0,4.1) .. (A) -- cycle;
+
+    \draw[red, very thick]
+        (A) .. controls (2.6,4.7) and (3.4,4.4) .. (B);
+    \draw[teal, very thick]
+        (B) .. controls (5.8,3.5) and (6.9,2.3) .. (C);
+    \draw[blue, very thick]
+        (C) .. controls (6.0,1.55) and (4.4,1.65) .. (D);
+    \draw[teal, very thick]
+        (D) .. controls (2.7,2.7) and (2.0,4.1) .. (A);
+
+    \draw[red,  very thick, -{Stealth[length=3mm]}] (2.9,4.62) -- (3.1,4.55);
+    \draw[teal, very thick, -{Stealth[length=3mm]}] (6.05,2.93) -- (6.2,2.74);
+    \draw[blue, very thick, -{Stealth[length=3mm]}] (5.0,1.66) -- (4.8,1.68);
+    \draw[teal, very thick, -{Stealth[length=3mm]}] (2.32,3.55) -- (2.22,3.78);
+
+    \fill (A) circle (2.6pt); \node[above left,  font=\small] at (A) {$A$};
+    \fill (B) circle (2.6pt); \node[above right, font=\small] at (B) {$B$};
+    \fill (C) circle (2.6pt); \node[right,       font=\small] at (C) {$C$};
+    \fill (D) circle (2.6pt); \node[below left,  font=\small] at (D) {$D$};
+
+    \node[red,  font=\footnotesize] at (3.95,4.55) {isotherm $T_1$};
+    \node[blue, font=\footnotesize] at (5.05,1.05) {isotherm $T_2$};
+    \node[teal, font=\footnotesize, right] at (6.35,3.05) {adiabat};
+    \node[teal, font=\footnotesize, left]  at (1.95,3.55) {adiabat};
+\end{tikzpicture}
+\caption{The Carnot cycle. Two isotherms (at temperatures $T_1$ and $T_2$, with $T_1>T_2$) joined by two adiabats, traversed clockwise so that net work is done by the gas.}
+\label{fig:carnot_intro}
+Let $Q_1$ be the heat absorbed in the process from $A$ to $B$ and $Q_2$ the heat \textbf{released} in the process from $C$ to $D$ (we change the convention here such that $Q_2>0$). We know, 
+\begin{align*}
+    Q_1 = Q_{AB} = W_{AB} = nRT_1\ln\frac{V_B}{V_A}\\
+    -Q_2 = Q_{CD} = W_{CD} = nRT_2\ln\frac{V_D}{V_C}
+\end{align*}
+\end{figure}
+Since the volume at $D$ is smaller than the volume at $C$, the logarithm is negative and so the heat is positive. Since the other two processes are adiabatic, there is no heat exchange. So the total heat is given by 
+\begin{equation}
+    Q_{tot} = nRT_1\ln\frac{V_B}{V_A} + nRT_2\ln\frac{V_C}{V_D}
+\end{equation}
+By the first law, since we are in a cycle $\Delta U = 0$. 
+\begin{equation*}
+    W_{BC} + W_{DA} = C_V(T_1-T_2) + C_V(T_2-T_1) = 0
+\end{equation*}
+The total work on the cycle is given also by $W = Q_1-Q_2$ (absorbed - released). What we have done here is converted heat into work, but not all of the heat was converted into work. This here is a heat engine. 
+The efficieny is naturally defined as 
+\begin{equation}
+    \eta = \frac{W}{Q_1} = \frac{Q_1 - Q_2}{Q_1} = 1 -\frac{Q_2}{Q_1}
+\end{equation}
+The second law of thermodynamcis says that $\eta <1$. Note that 
+\begin{align*}
+    \frac{Q_2}{Q_1} = \frac{T_2}{T_1}\frac{\ln\frac{V_C}{V_D}}{\ln \frac{V_B}{V_A}}
+\end{align*}
+and also 
+\begin{align*}
+    T_1V_B^{\gamma -1} = T_2V_C^{\gamma -1}\\
+    T_1V_A^{\gamma -1} = T_2V_D^{\gamma - 1}\\
+    \implies \left(\frac{V_B}{B_A}\right) = \left(\frac{V_C}{V_D}\right)\\
+    \implies \frac{Q_2}{Q_1} = \frac{T_2}{T_1}
+\end{align*}
+We can consider any other cycle and do the same analysis. For a generic Heat engine. We have a heat reservoir. We then have our ideal gas which we call our ideal gas. There is heat going into the heat engine, and then heat going out of it going into a reservoir $T_2$. There is some work done by the difference in work. 
+The efficiency $\eta = 1 - \frac{T_2}{T_1}$ is general. Note that $T_2<T_1$. The heat engine undergoes a cycle, so we can assume $\Delta U = 0$. That is what makes $W = Q_1 - Q_2$ valid. The reverse of this is known as the \textbf{refrigerator}. Here we have the same reservoirs, with $Q_2$ coming out of the lower temperature and going into the $Q_1$ into the higher temperature. We put work into the system here
+\subsection{The Second Law of Thermodynamics}
+The first law says energy is conserved. If we have some body that drops to the ground. When it hits the ground it gets hotter, because of the motion in the molecules in the body. We will not see the ball go back up to the same height, but this is not forbidden by the first law, so we need a second law. 
+This is an example of an \textbf{irreversible process}. The Carnot cycle we have been speaking about is a reversible process.  There are two statements of the second law. The first statement, called the \textbf{Kelvin-Planck} statement says 
+\begin{center}
+    You cannot build an engine whose sole effect is to turn heat into work. 
+\end{center}
+This just says you must have a $Q_2$. The second statement, the \textbf{Clausius} statement, says
+\begin{center}
+    You can't transfer heat from a cold body to a hotter body without work
+\end{center}
+These two statements are equivalent. A consequence is that 
+\begin{equation}
+    \frac{Q_1}{T_1} - \frac{Q_2}{T_2} < 0
+\end{equation}
+We can define the change in entropy as 
+\begin{equation}
+    \Delta S = \frac{Q}{T}
+\end{equation}
+or in the differential form 
+\begin{equation}
+    dS = \frac{\delta Q}{T}
+\end{equation}
+The total change in entropy in the carnot cycle is 
+\begin{equation}
+    \Delta S_{\text{carnot}} = \Delta S_{AB} + \Delta S_{CD} = \frac{Q_1}{T} + \frac{(-Q)}{T_2} = 0
+\end{equation}
+Entropy is a function of state. 
 \section{Lecture 23}
-\subsection{Entropy and the 2nd Law}
+\subsection{Entropy and the 2nd Law continued}
 \begin{equation}
     \Delta S \geq 0
 \end{equation}
+
 The entropy $S$ is mathematically defined as
 \begin{equation}
     \Delta S = S_b - S_a = \int^b_a \frac{\delta Q}{T}
@@ -2304,11 +2569,87 @@ We sum it up and get
     \sum_i \frac{\delta Q_{0i}}{T_0} = \sum_i \frac{\delta Q_i}{T_i} \implies \frac{Q_0}{T_0} = \oint \frac{\delta Q}{T}
 \end{equation*}
 We are trying to show that the integral must be zero. If $Q_0>0$, we put net heat into the system; by conservation of energy, since we returned to our original state, all of that heat was converted into work. This violates the Kelvin statement (you cannot have a cyclic process whose sole effect is to take in heat and convert it entirely into work). If $Q_0<0$, running everything in reverse gives the same contradiction. Hence $\oint_C\delta Q/T = 0$.
-
+\section{Lecture 25}
+\subsection{Irreversible processes}
+Recall that 
+\begin{equation*}
+    \eta = \frac{W}{Q_1} = 1 - \frac{T_2}{T_1}
+\end{equation*}
+This is the upper limit of the efficiency for a reversible process. By the first law $W = Q_1 - W_2$, so $\eta = 1 - \frac{Q_2}{Q_1}$. Let the work in an irreversible process be $W'$. It follows that $W'<W$. Since $W' = Q_1 - Q_2'$, it follows that $Q_2'<Q_2$. 
+In a reversible process
+\begin{equation*}
+    \frac{Q_1}{T_1} - \frac{Q_2}{T_2} = 0
+\end{equation*}
+We changed the convention to get 
+\begin{equation*}
+    \frac{Q_1}{T_1} + \frac{Q_2}{T_2} = 0
+\end{equation*}
+For an irreversible process, 
+\begin{equation}
+    \frac{Q_1}{T_1} + \frac{Q_2'}{T_2} < 0
+\end{equation}
+Remember that $Q_2$ and $Q_2'$ are both less than zero since heat is released. We can generalize further. Similar to the reversible cycle, we can obtain 
+\begin{equation*}
+    \oint \frac{\delta Q}{T} \leq 0 \qquad \text{(Clausius' Inequality)}
+\end{equation*}
+where we have equality in a reversible process and less than $0$ in an irreversible process. Let's say we have some irreversible cycle where we choose a path $a$ to b that is irreversible and a path $b$ to $a$ that is reversible. then 
+\begin{equation*}
+    \oint \frac{\delta Q}{T}=\underset{irreversible}{\int^b_a \frac{\delta Q}{T}} + \underset{reversible}{\int^a_b\frac{\delta Q}{T}} \leq 0
+\end{equation*}
+Recall that, by definition, 
+\begin{equation*}
+    \underset{reversible}{\int^b_a\frac{\delta Q}{T}} = S_b - S_a
+\end{equation*}
+Then we can rearrange the above to get
+\begin{equation}
+    S_b - S_a > \underset{irrev}{\int^b_a\frac{\delta Q}{T}}
+\end{equation}
+The right hand side is equal to $0$ for a closed system (like the universe). So we have just shown that for any process that can occure in nature, the change in entropy must be greater than $0$. The entropy can only increase. Clausius said that we cannot transfer heat from somthing cold to something hot. We can show that by computing the change in entropy 
+\begin{equation*}
+    \frac{-Q}{T_c} + \frac{Q}{T_h}
+\end{equation*}
+this is obvious less than $0$ since $T_c<T_h$. The Kelvin-Planck statement says that you cannot have a process where you turn heat into only work. Here the change in entropy is
+\begin{equation*}
+    S_b - S_a = -\frac{Q}{T_1} < 0 
+\end{equation*}
+because the cycle does not contribute to the entropy, so the only contributing factor is the heat being released by the reservoir. Let's look at a more general case of heat transfer, where two boxes at $T_1$ and $T_2$ respectively are connected and end up at some temperature $T_f$. The first law tells us that 
+\begin{equation*}
+    C_1(T_1-T_f) + C_2(T_2-T_f) = 0
+\end{equation*}
+where $C_1$ and $C_2$ are the heat capacities of the boxes. Then 
+\begin{equation*}
+    T_f = \frac{C_1T_1 + C_2T_2}{C_1+C_2}
+\end{equation*}
+Now we compute the change in entropy (using $\delta Q = C dT$), 
+\begin{equation*}
+    \Delta S = \int^{T_f}_{T_2}\frac{\delta Q}{T} = \int^{T_f}_{T_2}\frac{C_2 dT}{T} = C_2\ln\frac{T_f}{T_2}
+\end{equation*}
+We can get $\Delta S_1$ similarly, and then 
+\begin{equation}
+    \Delta S_{\text{tot}} =C_1\ln\frac{T_f}{T_1} + C_2\ln\frac{T_f}{T_2}
+\end{equation}
+We want to show that $\Delta S_{\text{tot}} >0$. This can be quite annoying, so let's do the case where $C_1 = C_2$, then 
+\begin{equation*}
+    \Delta S = C \ln\frac{T_f^2}{T_1T_2}\overset{\text{?}}{>}0
+\end{equation*}
+Since $T_f = \frac{T_1 + T_2}{2}$, we just need to show that 
+\begin{equation*}
+    (T_1 + T_2)^2 > 4T_1T_2
+\end{equation*}
+But $(T_1 + T_2)^2 = T_1^2 + 2T_1T_2 + T_2^2$, so subtracting $4T_1T_2$ we obtain $(T_1-T_2)^2$, which is greater than zero. If we have an ideal gas in a box that is partioned such that $V_1$ of the box is filled with a gas and $V_2$ is the final occupied volume (or just the volume of the box), the change in entropy we have calculated to be 
+\begin{equation*}
+    S_b - S_a = R\ln \frac{V_2}{V_1}>0
+\end{equation*}
+Obviously the reverse would not be true because $V_2 > V_1$. There is an interesting conversation to be had about the entropy of the universe here. The process of the gas occupying the rest of the box is an 
+irreversible process, but we can get the same change in entropy from a reverseible process where we have a weight (some sand) placed on a piston that covers the gas and then slowly apply heat, resulting in work being done against the external pressure as the gas expands. If we expand to a final volume of $V_2$ from an intial volume of $V_1$ the change in entropy will be same as that of the irreversible process we have discussed. But the entropy 
+of the universe will differ. In the irrevesible case $\Delta S_{\text{universe}} = R\ln\frac{V_2}{V_1}$, since no one added heat to anything. In the reversible case $\Delta S_{\text{universe}} = 0$. In general 
+\begin{equation}
+    \Delta S_{\text{universe}} = \Delta S_{\text{system}} + \Delta S_{\text{environment}}
+\end{equation}
+\section{Lecture 26}
 \clearpage
 \appendix
-\part*{Appendix: Mathematical Methods for Physics 4B}
-\addcontentsline{toc}{part}{Appendix: Mathematical Methods for Physics 4B}
+\chapter{Mathematical Methods for Physics 4B}
 \noindent This appendix collects the mathematical machinery behind the
 physics in the main notes. The first half (ODEs, Fourier analysis, the
 Laplacian, the wave equation) supports the waves material; the second half
