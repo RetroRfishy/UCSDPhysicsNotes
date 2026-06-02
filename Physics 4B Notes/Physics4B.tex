@@ -2647,6 +2647,42 @@ of the universe will differ. In the irrevesible case $\Delta S_{\text{universe}}
     \Delta S_{\text{universe}} = \Delta S_{\text{system}} + \Delta S_{\text{environment}}
 \end{equation}
 \section{Lecture 26}
+\subsection{More on heat transfer}
+Say we have a body at temperature $T_1$ connected to a big heat reservoir at $T_2$ such that $T_2<T_1$. The change in entropy will be, noting that $\delta Q = C_1 dT$
+$$\Delta S_1 = \int^b_a \frac{\delta Q}{T} = \int^{T_2}_{T_1}C_1\frac{dT}{T} = -C_1\ln\frac{T_1}{T_2}$$
+The change in entropy of the heat reservoir is 
+$$\Delta S_1 = \frac{Q}{T_2} = C_1\frac{T_1-T_2}{T_2}$$
+Then the total entropy is 
+$$\Delta S_{\text{tot}} = C_1\left[\frac{T_1-T_2}{T_2}-\ln\frac{T_1}{T_2}\right]$$
+If we have not violated anything, this should be greater than zero under the constraint $T_1>T_2$. We want to show 
+$$\frac{T_1}{T_2}-1-\ln\frac{T_1}{T_2}>0$$
+This is equivalent to showing $f(x) = x-1-\ln x>0$. Taking the derivative gives us $f'(x) = 1-\frac{1}{x}$, which is always greater than $0$ since $x=\frac{T_1}{T_2}>0$. So this function is always 
+increasing under our constraint and has a minimum at $x=1$ (when $T_1 = T_2$). So we have shown that the entropy is greater than zero here.
+\subsection{More on refrigerators}
+The second law says that we cannot transfer heat from the colder source to the warmer source without work. If there was no work, the change in entropy would be 
+$$\Delta S = \frac{Q}{T_1}-\frac{Q}{T_2}$$
+which is clearly less than zero as $T_2<T_1$. So to make it work we add some work such that 
+$$\Delta S = \frac{Q+W}{T_1} -\frac{Q}{T_2}>0$$
+\subsection{The speed of sound in air}
+Recall that 
+$$v_s = \sqrt{\frac{B}{\rho}}$$
+where 
+$$B = -V\pd{P}{V}$$. By the ideal gas law
+\begin{equation*}
+    P = \frac{nRT}{V} \implies -V\pd{P}{V}=\frac{nRT}{V}
+\end{equation*}
+Writing $\rho = \frac{M}{V}$, and doing the calculation for one mole
+$$ v_s = \sqrt{\frac{RT}{M}}$$
+Recall that the molar mass of air is $M = 28.96$ g/mol. Plugging this into our equation we get about 300 m/s. This is not right because we assumed constant 
+temperature, which we cannot do. Instead we calculate the Bulk modulus at constant entropy 
+$$ B = -V\pd{P}{V}\bigg)_S$$
+For an adiabatic process $PV^{\gamma} = \text{const.}$, so $P = \frac{C}{V^{\gamma}}$. Then 
+$$ V\pd{P}{V} = -\frac{\gamma C}{V^{\gamma}} = -\gamma P$$ 
+So the true value of the sound velocity is 
+\begin{equation}
+    v_s = \sqrt{\frac{\gamma RT}{M}}
+\end{equation}
+In air $C_V = \frac{5}{2}R$, so $\gamma = \frac{7}{5}$. Plugging this is in gives us the accurate $343$ m/s. 
 \clearpage
 \appendix
 \chapter{Mathematical Methods for Physics 4B}
