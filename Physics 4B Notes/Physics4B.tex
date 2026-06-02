@@ -2683,6 +2683,75 @@ So the true value of the sound velocity is
     v_s = \sqrt{\frac{\gamma RT}{M}}
 \end{equation}
 In air $C_V = \frac{5}{2}R$, so $\gamma = \frac{7}{5}$. Plugging this is in gives us the accurate $343$ m/s. 
+\section{Lecture 27}
+\subsection{Irreversible processes continued}
+Let us continue the example of the gas with a piston with two weights on it, where the external pressure is equal to the pressure on the inside. You remove a weight and the gas 
+expands, and you place the weight back on and the gas goes back to its original volume. There are scenarios here.
+\paragraph{Isothermic} Let the temperaure be $T$. From the ideal gas law we know $PV = RT$ (we are dealing with a single mole). We know that $\Delta S_{\text{sys}} = 0$ since the intital and final states are the same. Since we remove half the weight, in the expanded state the volume doubles. This is only true 
+becausae the temperature is constant here. So, when we add teh weight back and the gas contracts again, we return to the same state $(P,V,T)$. What is the change in etropy $\Delta S^{\text{env}}_{12}$ of the environment when the bax from the initial to the expanded state? What is $\Delta S^{\text{gas}}_{12}$? Recall that 
+$$\Delta S = nR\ln\frac{V_2}{V_1}+nc_v\ln\frac{T_2}{T_1}$$
+Since the temperatures are unchanged, we find that 
+$$\Delta S^{\text{gas}}_{12} = R\ln 2$$
+The environment gave heat to the system such that the temperature remain constant. To find this heat we just use the first law 
+$$dU = \delta Q - \delta W \implies \delta Q = \delta W \qquad \text{(for an isothermal process)}$$
+There is constant pressure here, just a half of the original pressure since we remove half the weight, so 
+$$W = \frac{P}{2}\Delta V = \frac{PV}{2} = \frac{RT}{2}$$
+The environment gave heat to the system, so our convention says the heat is negative here. Thus the environment lost entropy. Now we look at the final part of the process, where the weight is placed back on. The heat supplied in the final part is 
+$$Q_{23} = P(V' - V) = 2RT - RT = RT \implies \Delta S_{23} = +R$$
+So the entropy of the universe is 
+$$\Delta S^{2\rightarrow 3}_{\text{uni}} = R(-\ln 2 + 1) > 0$$
+\paragraph{Adiabatic} This does not hold for a thermally insulated box. The temperature changes and so the the initial and final states are not equal. We don't know the temperature or volume in the expanded state. We can find it using the first law. Here $\delta Q = 0$ and $W = \frac{P}{2}(V'-V)$. Then 
+$$\Delta U = -W \implies nC_V\Delta (T'-T)= \frac{P}{2}(V'-V)$$
+We can use the equation of state to relate these quantities. We know 
+$$\frac{P}{2}V' = RT'$$
+Let's say our gas is monatomic, so $C_V = \frac{3}{2}R$. Doing some algebra we obtain 
+$$T' =\frac{4}{5}T$$
+Since we know $PV' = 2RT'$ and $PV = RT$, we get $\frac{V'}{V} =\frac{2T'}{T} = \frac{8}{5}$. If we used the reversible adiabatic process formula 
+$$PV^{\gamma} = \text{const.} \implies \frac{V'}{V}=2^{1/\gamma} = 2^{0.6}$$ 
+This is clearly different to our result of $\frac{8}{5}$. Now we can try find the change in entropy. Since the box is thermally insultated
+$\Delta S_{\text{env}} = 0$. Again we use 
+$$\Delta S_{\text{gas}} = nR\ln\frac{V_2}{V_1}+ nC_V\ln\frac{T_2}{T_1} = R\ln\frac{8}{5} + C_V\ln\frac{4}{5} = 2.67\text{J/K}$$ 
+If you plugged in the numbers for the reversible process we looked at you'd see that the entropy of the gas would be zero. Note that this is only the change in entropy when the system expands, we still need to compute the change 
+for the last part of the process, which is when we place the weight back on and watch the gas contract. The final volume here is not the same as the initial volume, this would be impossible since the pressure is the same while the temperature is certainly different. Doing the same sort of calculation, we find that 
+$$T'' = \frac{28}{25}T$$  
+\subsection{Statistical Physiscs}
+Let's look at a free expansion of an ideal gas, where a box is partioned such that some of the box contains an ideal gas and the rest is empty. Once you remove the partition, the gas occupies the volume of the box. We know that 
+$$\Delta S = R\ln\frac{V_2}{V_1}$$
+We can, however, define entropy in terms of the state. 
+\begin{equation}
+    S(U,V,N) =k\ln\Omega(U,V,V)
+\end{equation}
+where $\Omega$ is the number of microstates in the system for a given macrostate ($U,V,N$). How do we count microstates? Take the volume and divide it into very small cells, though the size doesn't really matter. You can say that 
+the microstate of the volume is the number of molecules in that cell. For one molecule, the number of is then 
+$$\text{no. of microstates} = \frac{V}{a^3}$$
+where $a^3$ is the volume of each cell. If we had $N$ molecules, 
+\begin{equation}
+    \text{no. of microstates} = \left(\frac{V}{a^3}\right)^N
+\end{equation}
+Now we need to define microstates not only the position but also the momentum, since our current description fails to capture temperature. For volume our constraint was that the total volume is fixed, 
+for momentum it's that the total energy is fixed. For an atom, the kinetic energy is given by 
+\begin{equation}
+    \text{1 atm: kinetic energy} = \frac{p_x^2 + p_y^2 + p_z^2}{2m} = \mu
+\end{equation}
+The numerator defines a sphere of radius 
+$$R^2 = p_x^2 + p_y^2 + p_z^2 = 2m\mu$$. 
+We can now divide this sphere into cells of momentum. For $N$ particles, 
+\begin{equation}
+    U = \sum^N_{i=1} \frac{p_{x,i}^2 + p_{y,i}^2 + p_{z,i}^2}{2m}
+\end{equation}
+So for $N$ particles, we need to count the cells on a $3N$-dimensional sphere. Obviously the volume of a sphere is $4\pi R^2$ in $\mathbb{R}^3$. The power of $R$ is going to be one less than the dimension of your space. So we find that 
+\begin{equation}
+    R^{3N-1}\propto U^{\frac{3N-1}{2}}
+\end{equation}
+Thusm the number of microstates is 
+\begin{equation}
+    \text{no. of microstates} \propto U^{3N/2}
+\end{equation}
+Plugging this into our entropy formula, 
+\begin{equation}
+    S(U,V,N) = nR\ln(\frac{V}{a^3})+ k\ln U^{3N/2} = nR\ln(\frac{V}{a^3}) + \frac{3}{2}Nk\ln U =nR\ln(\frac{V}{a^3}) + nC_V\ln T
+\end{equation}
+This is the answer for a diatomic ideal gas. Note that if we plugged in $C_V$ for a diatomic gas, we would get the incorrect answer, since there would be degrees of freedom we did not account for. 
 \clearpage
 \appendix
 \chapter{Mathematical Methods for Physics 4B}
