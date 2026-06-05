@@ -2714,44 +2714,357 @@ $$\Delta S_{\text{gas}} = nR\ln\frac{V_2}{V_1}+ nC_V\ln\frac{T_2}{T_1} = R\ln\fr
 If you plugged in the numbers for the reversible process we looked at you'd see that the entropy of the gas would be zero. Note that this is only the change in entropy when the system expands, we still need to compute the change 
 for the last part of the process, which is when we place the weight back on and watch the gas contract. The final volume here is not the same as the initial volume, this would be impossible since the pressure is the same while the temperature is certainly different. Doing the same sort of calculation, we find that 
 $$T'' = \frac{28}{25}T$$  
-\subsection{Statistical Physiscs}
-Let's look at a free expansion of an ideal gas, where a box is partioned such that some of the box contains an ideal gas and the rest is empty. Once you remove the partition, the gas occupies the volume of the box. We know that 
-$$\Delta S = R\ln\frac{V_2}{V_1}$$
-We can, however, define entropy in terms of the state. 
-\begin{equation}
-    S(U,V,N) =k\ln\Omega(U,V,V)
-\end{equation}
-where $\Omega$ is the number of microstates in the system for a given macrostate ($U,V,N$). How do we count microstates? Take the volume and divide it into very small cells, though the size doesn't really matter. You can say that 
-the microstate of the volume is the number of molecules in that cell. For one molecule, the number of is then 
-$$\text{no. of microstates} = \frac{V}{a^3}$$
-where $a^3$ is the volume of each cell. If we had $N$ molecules, 
-\begin{equation}
-    \text{no. of microstates} = \left(\frac{V}{a^3}\right)^N
-\end{equation}
-Now we need to define microstates not only the position but also the momentum, since our current description fails to capture temperature. For volume our constraint was that the total volume is fixed, 
-for momentum it's that the total energy is fixed. For an atom, the kinetic energy is given by 
-\begin{equation}
-    \text{1 atm: kinetic energy} = \frac{p_x^2 + p_y^2 + p_z^2}{2m} = \mu
-\end{equation}
-The numerator defines a sphere of radius 
-$$R^2 = p_x^2 + p_y^2 + p_z^2 = 2m\mu$$. 
-We can now divide this sphere into cells of momentum. For $N$ particles, 
-\begin{equation}
-    U = \sum^N_{i=1} \frac{p_{x,i}^2 + p_{y,i}^2 + p_{z,i}^2}{2m}
-\end{equation}
-So for $N$ particles, we need to count the cells on a $3N$-dimensional sphere. Obviously the volume of a sphere is $4\pi R^2$ in $\mathbb{R}^3$. The power of $R$ is going to be one less than the dimension of your space. So we find that 
-\begin{equation}
-    R^{3N-1}\propto U^{\frac{3N-1}{2}}
-\end{equation}
-Thusm the number of microstates is 
-\begin{equation}
-    \text{no. of microstates} \propto U^{3N/2}
-\end{equation}
-Plugging this into our entropy formula, 
-\begin{equation}
-    S(U,V,N) = nR\ln(\frac{V}{a^3})+ k\ln U^{3N/2} = nR\ln(\frac{V}{a^3}) + \frac{3}{2}Nk\ln U =nR\ln(\frac{V}{a^3}) + nC_V\ln T
-\end{equation}
-This is the answer for a diatomic ideal gas. Note that if we plugged in $C_V$ for a diatomic gas, we would get the incorrect answer, since there would be degrees of freedom we did not account for. 
+```latex
+\subsection{Statistical Physics}
+
+Consider the free expansion of an ideal gas. A box is partitioned so that one side contains an ideal gas and the other side is empty. When the partition is removed, the gas expands to occupy the full volume. For an ideal gas undergoing free expansion, the temperature is unchanged, so the entropy change is
+\[
+\Delta S = nR\ln\frac{V_2}{V_1}.
+\]
+
+Statistically, entropy is defined by
+\[
+S(U,V,N)=k\ln \Omega(U,V,N),
+\]
+where \(\Omega(U,V,N)\) is the number of microstates compatible with the macrostate \((U,V,N)\).
+
+To estimate \(\Omega\), first consider the position degrees of freedom. Divide the volume into small cells of volume \(a^3\). For one molecule, the number of possible position cells is approximately
+\[
+\frac{V}{a^3}.
+\]
+For \(N\) distinguishable molecules, the number of position microstates would be approximately
+\[
+\left(\frac{V}{a^3}\right)^N.
+\]
+Thus the position contribution scales like
+\[
+\Omega_{\text{position}}\propto V^N.
+\]
+
+However, a full microstate also requires the momenta of the particles. For a monatomic ideal gas,
+\[
+U=\sum_{i=1}^N \frac{p_{x,i}^2+p_{y,i}^2+p_{z,i}^2}{2m}.
+\]
+The constraint of fixed total energy defines a sphere in \(3N\)-dimensional momentum space:
+\[
+\sum_{i=1}^N \left(p_{x,i}^2+p_{y,i}^2+p_{z,i}^2\right)=2mU.
+\]
+Thus the radius of this sphere satisfies
+\[
+R_p^2=2mU.
+\]
+
+The number of accessible momentum states is proportional to the volume of a \(3N\)-dimensional sphere, and hence scales approximately as
+\[
+\Omega_{\text{momentum}}\propto R_p^{3N}\propto U^{3N/2}.
+\]
+More carefully, if one counts states on a thin energy shell, one obtains a factor proportional to \(U^{3N/2-1}\), but for large \(N\) this difference is negligible for the thermodynamic entropy.
+
+Combining the position and momentum contributions,
+\[
+\Omega(U,V,N)\propto V^N U^{3N/2}.
+\]
+Therefore,
+\[
+S(U,V,N)
+=
+k\ln \Omega(U,V,N)
+=
+Nk\ln V+\frac{3}{2}Nk\ln U+\text{constant}.
+\]
+
+For a monatomic ideal gas,
+\[
+U=\frac{3}{2}nRT.
+\]
+Hence the entropy change between two equilibrium states is
+\[
+\Delta S
+=
+nR\ln\frac{V_2}{V_1}
++
+nC_V\ln\frac{T_2}{T_1}.
+\]
+For a monatomic ideal gas,
+\[
+C_V=\frac{3}{2}R.
+\]
+
+This derivation only accounts for translational kinetic energy, so it applies directly to a monatomic ideal gas. For a diatomic gas, rotational degrees of freedom contribute additional momentum-space degrees of freedom, changing \(C_V\). Therefore, one should not blindly use the monatomic counting result for a diatomic gas.
+
+\section{Lecture 28}
+
+Recall from last lecture that
+\[
+S(U,V,N)=k\ln\Omega(U,V,N),
+\]
+where \(\Omega\) is the number of microstates. For an ideal gas, the position contribution scales as
+\[
+\Omega_{\text{position}}\propto V^N,
+\]
+and the momentum contribution scales approximately as
+\[
+\Omega_{\text{momentum}}\propto U^{3N/2}.
+\]
+This leads to the ideal-gas entropy change formula
+\[
+\Delta S_{12}
+=
+nR\ln\frac{V_2}{V_1}
++
+nC_V\ln\frac{T_2}{T_1}.
+\]
+
+\subsection{A Better Description of Temperature}
+
+Start from the first law for a reversible process:
+\[
+dU=\delta Q-\delta W.
+\]
+For a simple compressible system,
+\[
+\delta W=PdV
+\]
+for work done by the system. For a reversible process,
+\[
+\delta Q_{\rm rev}=TdS.
+\]
+Thus
+\[
+dU=TdS-PdV.
+\]
+Rearranging,
+\[
+TdS=dU+PdV,
+\]
+so
+\[
+dS=\frac{1}{T}dU+\frac{P}{T}dV.
+\]
+
+Since entropy can be regarded as a state function \(S(U,V,N)\), for fixed \(N\),
+\[
+dS=
+\left(\frac{\partial S}{\partial U}\right)_V dU
++
+\left(\frac{\partial S}{\partial V}\right)_U dV.
+\]
+Comparing the two expressions gives
+\[
+\boxed{
+\frac{1}{T}
+=
+\left(\frac{\partial S}{\partial U}\right)_V
+}
+\]
+and
+\[
+\boxed{
+\frac{P}{T}
+=
+\left(\frac{\partial S}{\partial V}\right)_U.
+}
+\]
+Thus temperature measures how rapidly entropy changes when energy is added at fixed volume.
+
+\subsection{Why Does Heat Flow from High Temperature to Low Temperature?}
+
+Consider two systems that can exchange energy but are isolated from the rest of the universe. Let their energies be \(U_1\) and \(U_2\), with
+\[
+U_1+U_2=U_{\rm tot}
+\]
+fixed.
+
+The total number of microstates is
+\[
+\Omega_{\rm tot}(U_1)
+=
+\Omega_1(U_1)\Omega_2(U_2)
+=
+\Omega_1(U_1)\Omega_2(U_{\rm tot}-U_1).
+\]
+Equilibrium corresponds to the maximum of \(\Omega_{\rm tot}\), equivalently the maximum of \(\ln\Omega_{\rm tot}\). Thus
+\[
+\frac{d}{dU_1}\ln\Omega_{\rm tot}=0.
+\]
+
+Now
+\[
+\ln\Omega_{\rm tot}
+=
+\ln\Omega_1(U_1)
++
+\ln\Omega_2(U_{\rm tot}-U_1).
+\]
+Differentiating,
+\[
+\frac{d}{dU_1}\ln\Omega_{\rm tot}
+=
+\frac{\partial \ln\Omega_1}{\partial U_1}
+-
+\frac{\partial \ln\Omega_2}{\partial U_2}.
+\]
+At equilibrium this is zero, so
+\[
+\frac{\partial \ln\Omega_1}{\partial U_1}
+=
+\frac{\partial \ln\Omega_2}{\partial U_2}.
+\]
+
+Since
+\[
+S=k\ln\Omega,
+\]
+we have
+\[
+\frac{\partial \ln\Omega}{\partial U}
+=
+\frac{1}{k}
+\left(\frac{\partial S}{\partial U}\right)_V
+=
+\frac{1}{kT}.
+\]
+Therefore equilibrium requires
+\[
+\frac{1}{kT_1}=\frac{1}{kT_2},
+\]
+so
+\[
+T_1=T_2.
+\]
+
+Heat flows in the direction that increases the total entropy. If \(T_1>T_2\), then
+\[
+\frac{1}{T_1}<\frac{1}{T_2}.
+\]
+If a small amount of energy \(\delta U\) flows from system 1 to system 2, then
+\[
+U_1\to U_1-\delta U,
+\qquad
+U_2\to U_2+\delta U.
+\]
+The total entropy change is
+\[
+\delta S_{\rm tot}
+=
+-\frac{\delta U}{T_1}
++
+\frac{\delta U}{T_2}
+=
+\delta U\left(\frac{1}{T_2}-\frac{1}{T_1}\right)>0.
+\]
+Thus heat flows spontaneously from higher temperature to lower temperature.
+
+\subsection{Gibbs Paradox}
+
+Consider an ideal gas in a box divided into two parts. One side has volume \(V_1\) and particle number \(N_1\), while the other side has volume \(V_2\) and particle number \(N_2\). When the partition is removed, the gas can occupy the total volume
+\[
+V=V_1+V_2.
+\]
+
+If the gases on the two sides are different, mixing produces a genuine entropy increase. For example, if the two sides have equal volumes and equal particle numbers, then each gas doubles the volume available to it, giving
+\[
+\Delta S_{\rm mix}
+=
+N_1k\ln 2+N_2k\ln 2
+=
+Nk\ln 2.
+\]
+This is the entropy of mixing for two different gases.
+
+However, if the gases on the two sides are the same gas, then removing the partition should not produce a thermodynamic entropy change when the initial densities, temperatures, and pressures are the same. There is no observable macroscopic change.
+
+The paradox arises if we count identical particles as distinguishable. For distinguishable particles, the position-state count scales like
+\[
+V^N.
+\]
+This overcounts microstates, because interchanging two identical particles does not produce a physically new state. The correct counting divides by \(N!\):
+\[
+\Omega\propto \frac{V^N}{N!}.
+\]
+Therefore
+\[
+S=k\ln\Omega
+=
+k\ln\left(\frac{V^N}{N!}\right)+\text{momentum terms}.
+\]
+
+Using Stirling's approximation,
+\[
+\ln N!\approx N\ln N-N,
+\]
+we get
+\[
+S
+=
+Nk\ln V-k\ln N!+\text{momentum terms}.
+\]
+Thus
+\[
+S
+\approx
+Nk\ln V-Nk\ln N+Nk+\text{momentum terms},
+\]
+or
+\[
+S
+\approx
+Nk\ln\frac{V}{N}+Nk+\text{momentum terms}.
+\]
+
+This correction resolves the Gibbs paradox. For identical gases initially at the same density and temperature, removing the partition does not create a new thermodynamic macrostate, so there is no entropy of mixing.
+
+\section{Lecture 29}
+
+Recall that water vaporizes at \(100^\circ{\rm C}\) at atmospheric pressure. The latent heat of vaporization is approximately
+\[
+L_{w\to v}=540\ \text{kcal/kg}.
+\]
+
+Suppose we have water in a cylinder with a movable piston. As heat is added at constant pressure, the water turns into vapor. During the phase change, the temperature remains constant, but energy is still required to change the phase.
+
+For a reversible phase change at temperature \(T\), the entropy change is
+\[
+\Delta S=\frac{Q_{\rm rev}}{T}.
+\]
+If a mass \(m\) vaporizes, then
+\[
+Q_{\rm rev}=mL,
+\]
+so
+\[
+\Delta S=\frac{mL}{T}.
+\]
+
+The important point is that latent heat at constant pressure is not only the change in internal energy. At constant pressure,
+\[
+Q_P=\Delta H,
+\]
+where \(H\) is enthalpy:
+\[
+H=U+PV.
+\]
+Therefore, for a constant-pressure process,
+\[
+Q_P=\Delta U+P\Delta V.
+\]
+
+During vaporization, the volume increases enormously. The system must push the piston upward, doing work
+\[
+W=P\Delta V.
+\]
+Thus the latent heat supplied goes partly into increasing the internal energy and partly into doing expansion work:
+\[
+mL=\Delta U+P\Delta V.
+\]
+Equivalently,
+\[
+\Delta U=mL-P\Delta V.
+\]
+
+This is why latent heat at constant pressure is naturally interpreted as an enthalpy change rather than just an internal-energy change.
+```
+
 \clearpage
 \appendix
 \chapter{Mathematical Methods for Physics 4B}
